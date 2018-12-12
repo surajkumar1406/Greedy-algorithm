@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	//code
+	int T;
+	cin>>T;
+	for(int t=0;t<T;t++){
+	    int n;
+	    int *a;
+	    int *b;
+	    int index;
+	    cin>>n;
+	    int c=0;
+	    int arr[n];
+	    for(int i=0;i<n;i++)
+	        cin>>arr[i];
+	    a=arr;
+	    for(int j=0;j<n-1;j++){
+	        b=new int[n-j-1];
+	        index=(n-j-1)-(j+1);
+	        if(index<0)
+	            index=(n-j-1);
+	        c=0;
+	        for(int k=0;k<n-j-1;k++){
+	            if(c==index)
+	                c++;
+	            if(index==n-j-1){
+	                b[k]=a[c];
+	            }
+	            else{
+	                b[(k+1)%(n-j-1)]=a[c];
+	            }
+	            
+	            c++;
+	        }
+	        a=b;
+	    }
+	    cout<<*a<<"\n";
+	}
+	return 0;
+}
